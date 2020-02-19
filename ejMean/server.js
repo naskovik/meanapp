@@ -9,6 +9,7 @@ const mongoose = require('mongoose');
 // Conection with Mongo db with mongoose.
 
 const dbURI = 'mongodb://localhost/db_mean';
+mongoose.connect(dbURI, { useNewUrlParser: true, useUnifiedTopology: true });
 
 // Mongoose conection event configuration
 
@@ -51,6 +52,9 @@ app.use(express.static(path.join(__dirname, 'dist/ejMean')));
 app.get('/api', (req, res) => {
     res.send('API works');
 })
+
+require('./server/routes/tarea')(app);
+
 
 app.get('*', (req, res) => {
     res.sendFile(path.join(__dirname, 'dist/ejMean/index.html'));
