@@ -45,7 +45,7 @@ app.use(bodyParser.urlencoded({ extended: false }));
 // Config. of directory 'dist' as our static directory.
 // In this directory we will have the archives obtained from the build of our 
 // Angular app
-app.use(express.static(path.join(__dirname, 'dist')));
+app.use(express.static(path.join(__dirname, 'dist/ejMean')));
 
 // routes config
 app.get('/api', (req, res) => {
@@ -53,7 +53,7 @@ app.get('/api', (req, res) => {
 })
 
 app.get('*', (req, res) => {
-    res.sendFile(path.join(__dirname, 'dist/index.html'));
+    res.sendFile(path.join(__dirname, 'dist/ejMean/index.html'));
 });
 
 // Hearing port config.
