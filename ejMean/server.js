@@ -2,7 +2,7 @@
 const express = require('express');
 const path = require('path');
 const http = require('http');
-const bp = require('body-parser');
+const bodyParser = require('body-parser');
 const mongoose = require('mongoose');
 
 
@@ -10,7 +10,7 @@ const mongoose = require('mongoose');
 
 const dbURI = 'mongodb://localhost/db_mean';
 
-//Mongoose conection event configuration
+// Mongoose conection event configuration
 
 mongoose.connection.on('connected', () => {
     console.log('Mongoose default connection open to ' + dbURI)
@@ -39,8 +39,8 @@ process.on('SIGINT', () => {
 const app = express();
 
 // Parsers for POST data
-app.use(bp.json);
-app.use(bp.urlencoded({ extended: false }));
+app.use(bodyParser.json());
+app.use(bodyParser.urlencoded({ extended: false }));
 
 // Config. of directory 'dist' as our static directory.
 // In this directory we will have the archives obtained from the build of our 
