@@ -1,4 +1,7 @@
 import { Component, OnInit } from '@angular/core';
+import { TareaModel } from '../shared/tarea.model';
+import { Observable } from 'rxjs';
+import { TareaService } from '../shared/tarea.service';
 
 @Component({
   selector: 'app-tarea-lista',
@@ -7,9 +10,13 @@ import { Component, OnInit } from '@angular/core';
 })
 export class TareaListaComponent implements OnInit {
 
-  constructor() { }
+  tareas: Observable<TareaModel[]>;
 
-  ngOnInit(): void {
+  constructor(private tareaService: TareaService) { }
+
+  ngOnInit() {
+
+    this.tareas = this.tareaService.getAllTareas();
   }
 
 }

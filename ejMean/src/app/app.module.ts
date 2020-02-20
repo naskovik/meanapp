@@ -5,6 +5,9 @@ import { AppRoutingModule } from './app-routing.module';
 import { AppComponent } from './app.component';
 import { TareaListaComponent } from './tarea-lista/tarea-lista.component';
 import { EditTareaComponent } from './edit-tarea/edit-tarea.component';
+import { HttpClientModule } from '@angular/common/http';
+import { TareaService } from './shared/tarea.service';
+import { FormsModule } from '@angular/forms';
 
 const appRoutes: Routes = [
   { path: 'tareas', component: TareaListaComponent},
@@ -22,9 +25,11 @@ const appRoutes: Routes = [
   imports: [
     BrowserModule,
     AppRoutingModule,
-    RouterModule.forRoot(appRoutes)
+    RouterModule.forRoot(appRoutes),
+    HttpClientModule,
+    FormsModule
   ],
-  providers: [],
+  providers: [TareaService],
   bootstrap: [AppComponent]
 })
 export class AppModule { }

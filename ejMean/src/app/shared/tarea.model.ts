@@ -4,6 +4,7 @@ export const TareaEstadosSelect = [{ value: 'Por hacer'}, { value: 'En progreso'
 
 export class TareaModel {
     constructor(
+        // tslint:disable-next-line: variable-name
         public _id: string,
         public titulo: string,
         public fecha: Date,
