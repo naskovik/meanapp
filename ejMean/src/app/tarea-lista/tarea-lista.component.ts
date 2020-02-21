@@ -19,4 +19,11 @@ export class TareaListaComponent implements OnInit {
     this.tareas = this.tareaService.getAllTareas();
   }
 
+  deleteTarea(id: string) {
+    this.tareaService.deleteTarea(id)
+    .subscribe(data => console.log(data), error => console.log(error));
+
+    this.tareas = this.tareaService.getAllTareas();
+  }
+
 }

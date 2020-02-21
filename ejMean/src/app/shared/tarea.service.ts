@@ -27,4 +27,8 @@ export class TareaService {
     { titulo: tarea.titulo, fecha: tarea.fecha, estado: tarea.estado});
   }
 
+  deleteTarea(id: string) {
+    return this.http.delete<string>('http://localhost:3000/api/tareas/' + id);
+  }
+
 }
