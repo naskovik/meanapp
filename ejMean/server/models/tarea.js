@@ -4,7 +4,7 @@ const Schema = mongoose.Schema;
 const tareaSchema = new Schema({
   titulo: {
     type: String,
-    required: true,
+    required: [true, 'El campo titulo es obligatorio'],
     
   },
   fecha: {
