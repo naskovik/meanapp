@@ -25,7 +25,7 @@ export class EditTareaComponent implements OnInit {
       switchMap(id => {
         if (id) { return this.tareaService.getTarea(id); }
         // tslint:disable-next-line: one-line
-        else { return of(new TareaModel(null, '', new Date(), 'Por hacer')); }
+        else { return of(new TareaModel('Tarea 1', '', new Date(), 'Por hacer')); }
       })
     )
     .subscribe( tarea => { this.tarea = tarea; console.log(tarea); },
