@@ -2,11 +2,7 @@ const mongoose = require('mongoose');
 const Schema = mongoose.Schema;
 
 const tareaSchema = new Schema({
-  titulo: {
-    type: String,
-    required: [true, 'El campo titulo es obligatorio'],
-    
-  },
+  titulo: String,
   fecha: {
     type: Date,
     default: Date.now

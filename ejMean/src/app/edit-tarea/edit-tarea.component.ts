@@ -13,7 +13,7 @@ import { map, switchMap } from 'rxjs/operators';
 })
 export class EditTareaComponent implements OnInit {
   tarea: TareaModel;
-  tareaEstadosSelect = [];
+  tareaEstadosSelect = {};
 
   constructor(private route: ActivatedRoute, private router: Router, private tareaService: TareaService) { }
 
@@ -21,11 +21,11 @@ export class EditTareaComponent implements OnInit {
     this.tareaEstadosSelect = TareaEstadosSelect;
 
     this.route.paramMap.pipe(
-      map(params => params.get('id')),
-      switchMap(id => {
-        if (id) { return this.tareaService.getTarea(id); }
+      map(params => params.get('_id')),
+      switchMap(_id => {
+        if (_id) { return this.tareaService.getTarea(_id); }
         // tslint:disable-next-line: one-line
-        else { return of(new TareaModel('Tarea 1', '', new Date(), 'Por hacer')); }
+        else { return of(new TareaModel(null, '', new Date(), 'Por hacer')); }
       })
     )
     .subscribe( tarea => { this.tarea = tarea; console.log(tarea); },
@@ -42,7 +42,7 @@ export class EditTareaComponent implements OnInit {
       this.tareaService.addTarea(this.tarea)
       .subscribe( data => {
         console.log(data);
-        this.router.navigate(['tareas']); }, error => console.log(error));
+        this.router.navigate(['tareas/' + this.tarea._id]); }, error => console.log(error));
     }
   }
 

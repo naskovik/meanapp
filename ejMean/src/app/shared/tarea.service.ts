@@ -23,7 +23,7 @@ export class TareaService {
   }
 
   updateTarea(tarea: TareaModel) {
-    return this.http.put<TareaModel>('http://localhost:3000/api/tareas' + tarea._id,
+    return this.http.put<TareaModel>('http://localhost:3000/api/tareas/' + tarea._id,
     { titulo: tarea.titulo, fecha: tarea.fecha, estado: tarea.estado});
   }
 

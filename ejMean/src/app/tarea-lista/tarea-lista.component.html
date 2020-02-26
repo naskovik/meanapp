@@ -4,7 +4,7 @@
             <form class="form-inline">
                 <fieldset class="form-group col-sm-1"></fieldset>
                 <fieldset class="form-group col-sm-1">
-                    <a class="btn btn-primary" [routerLink]="['/tareas/new']"></a>
+                    <a class="btn btn-primary" [routerLink]="['/tareas/new']">Add</a>
                 </fieldset>
             </form>
             <br>
@@ -19,14 +19,14 @@
                     </tr>
                 </thead>
                 <tbody>
-                    <tr *ngFor="let tarea of tareas | async" class="row">
+                    <tr class="row" *ngFor="let tarea of tareas | async">
                     <td class="col-sm-6"><i>{{ tarea.titulo }}</i></td>
                     <td class="col-sm-2"><i>{{ tarea.fecha | date: 'dd-MM-yyyy' }}</i></td>
                     <td class="col-sm-2"><i>{{ tarea.estado }}</i></td>
                     <td class="col-sm-1"><a class="btn btn-info" 
                         [routerLink]="['/tareas',tarea._id,'edit']">Edit</a></td>
                     <td class="col-sm-1"><a class="btn btn-danger"
-                        (click)="deleteTarea(tarea._id)">-</a></td>
+                        (click)="deleteTarea(tarea._id)">Delete</a></td>
                     </tr>
                 </tbody>
             </table>

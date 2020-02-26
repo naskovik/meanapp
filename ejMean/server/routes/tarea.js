@@ -1,13 +1,15 @@
-module.exports = function(app){
+const express = require('express'),
+ tareaCtrl = require('../controllers/tarea'),
+ router = express.Router();
 
-    var tareaCtrl = require('../controllers/tarea');
+ // General route
+ router.get('/tareas', tareaCtrl.list_all_tareas);
+ router.post('/tareas', tareaCtrl.create_tarea);
 
-    app.route('/api/tareas')
-      .get(tareaCtrl.list_all_tareas)
-      .post(tareaCtrl.create_tarea);
+ // tarea:id route
 
-    app.route('/api/tareas/:tareaId')
-      .get(tareaCtrl.read_tarea)
-      .put(tareaCtrl.update_tarea)
-      .delete(tareaCtrl.delete_tarea);
-}
+ router.get('/tareas/:tareaId', tareaCtrl.read_tarea);
+ router.post('/tareas/:tareaId', tareaCtrl.update_tarea);
+ router.delete('/tareas/:tareaId', tareaCtrl.delete_tarea);
+
+ module.exports = router;
