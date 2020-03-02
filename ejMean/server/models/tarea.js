@@ -8,11 +8,9 @@ const tareaSchema = new Schema({
     default: Date.now
   },
   estado: {
-    type: {
-      type: String,
-      enum: ['Por hacer', 'En curso', 'Terminada']
-    },
-    default: ['Por hacer']
+    type: String,
+    enum: ['Por hacer', 'En curso', 'Hecha'],
+    default: 'Por hacer'
   }
 });
 
