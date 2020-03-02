@@ -1,0 +1,30 @@
+{
+    "env": {
+        "browser": true,
+        "commonjs": true,
+        "es6": true
+    },
+    "extends": [
+        "google"
+    ],
+    "globals": {
+        "Atomics": "readonly",
+        "SharedArrayBuffer": "readonly"
+    },
+    "parser": "@typescript-eslint/parser",
+    "parserOptions": {
+        "ecmaVersion": 2018
+    },
+    "plugins": [
+        "@typescript-eslint"
+    ],
+    "rules": {
+        "indent":["warn", 2],
+        "no-unused-vars":"warn",
+        "no-unused-expressions": "warn",
+        "space-before-blocks": "warn",
+        "no-extra-semi":"off",
+        "semi": [2, "always"],
+        "camelcase":"off"
+    }
+}
