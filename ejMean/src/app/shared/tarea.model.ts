@@ -1,5 +1,5 @@
 type TareaEstados = 'Por hacer' | 'En progreso' | 'Hecha';
-export const TareaEstadosSelect = { porHacer: 'Por hacer', hecha: 'Hecha', enProgreso: 'En progreso'};
+export const TareaEstadosSelect = [{ value: 'Por hacer' }, { value: 'En curso' }, { value: 'Hecha' }];
 
 export class TareaModel {
     constructor(

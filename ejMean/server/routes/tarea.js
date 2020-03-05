@@ -9,7 +9,7 @@ const express = require('express'),
  // tarea:id route
 
  router.get('/tareas/:tareaId', tareaCtrl.read_tarea);
- router.post('/tareas/:tareaId', tareaCtrl.update_tarea);
+ router.put('/tareas/:tareaId', tareaCtrl.update_tarea);
  router.delete('/tareas/:tareaId', tareaCtrl.delete_tarea);
 
  module.exports = router;

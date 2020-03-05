@@ -19,12 +19,12 @@
                     </tr>
                 </thead>
                 <tbody>
-                    <tr class="row" *ngFor="let tarea of tareas | async">
+                    <tr class="row" *ngFor="let tarea of tareas">
                     <td class="col-sm-6"><i>{{ tarea.titulo }}</i></td>
                     <td class="col-sm-2"><i>{{ tarea.fecha | date: 'dd-MM-yyyy' }}</i></td>
                     <td class="col-sm-2"><i>{{ tarea.estado }}</i></td>
                     <td class="col-sm-1"><a class="btn btn-info" 
-                        [routerLink]="['/tareas',tarea._id,'edit']">Edit</a></td>
+                        [routerLink]="['/tareas/edit', tarea._id]">Edit</a></td>
                     <td class="col-sm-1"><a class="btn btn-danger"
                         (click)="deleteTarea(tarea._id)">Delete</a></td>
                     </tr>

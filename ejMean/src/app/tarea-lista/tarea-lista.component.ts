@@ -2,28 +2,42 @@ import { Component, OnInit } from '@angular/core';
 import { TareaModel } from '../shared/tarea.model';
 import { Observable } from 'rxjs';
 import { TareaService } from '../shared/tarea.service';
+import { Router } from '@angular/router';
 
 @Component({
   selector: 'app-tarea-lista',
   templateUrl: './tarea-lista.component.html',
-  styleUrls: ['./tarea-lista.component.css']
+  styleUrls: ['./tarea-lista.component.css'],
+  providers: [TareaService]
 })
 export class TareaListaComponent implements OnInit {
 
-  tareas: Observable<TareaModel[]>;
+  public tareas: TareaModel[];
 
-  constructor(private tareaService: TareaService) { }
+  constructor(private tareaService: TareaService, private router: Router) { }
 
   ngOnInit() {
 
-    this.tareas = this.tareaService.getAllTareas();
+    this.tareaService.getAllTareas().subscribe(
+      response => {
+        if (response.tareas) { this.tareas = response.tareas; }
+      },
+      error => { console.log(error); }
+    );
   }
 
   deleteTarea(id: string) {
     this.tareaService.deleteTarea(id)
-    .subscribe(data => console.log(data), error => console.log(error));
-
-    this.tareas = this.tareaService.getAllTareas();
+    .subscribe(
+      response => {
+        console.log(response);
+        this.ngOnInit();
+      },
+      error => {
+        console.log(error);
+        this.router.navigate(['/tareas']);
+      }
+    );
   }
 
 }

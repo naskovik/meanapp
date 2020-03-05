@@ -12,38 +12,37 @@ import { map, switchMap } from 'rxjs/operators';
   styleUrls: ['./edit-tarea.component.css']
 })
 export class EditTareaComponent implements OnInit {
-  tarea: TareaModel;
-  tareaEstadosSelect = {};
+  public tarea: TareaModel;
+  public tareaEstadosSelect = [];
+  public status: string;
 
   constructor(private route: ActivatedRoute, private router: Router, private tareaService: TareaService) { }
 
   ngOnInit() {
     this.tareaEstadosSelect = TareaEstadosSelect;
-
-    this.route.paramMap.pipe(
-      map(params => params.get('_id')),
-      switchMap(_id => {
-        if (_id) { return this.tareaService.getTarea(_id); }
-        // tslint:disable-next-line: one-line
-        else { return of(new TareaModel(null, '', new Date(), 'Por hacer')); }
-      })
-    )
-    .subscribe( tarea => { this.tarea = tarea; console.log(tarea); },
-    error => console.log(error));
+    // get id from url
+    this.route.paramMap.subscribe( (params: ParamMap) => {
+      let id = params.get('id');
+      this.tareaService.getTarea(id).subscribe(
+        response => {
+          if (response.tarea) this.tarea = response.tarea;
+          else this.router.navigate(['/tareas']);
+        }, error => {
+          this.router.navigate(['/tareas']);
+          console.log(error);
+        }
+      );
+    });
   }
 
   onSubmit() {
-    if (this.tarea._id) {
-      this.tareaService.updateTarea(this.tarea)
-      .subscribe( data => {
-        console.log(data);
-        this.router.navigate(['/tareas']); }, error => console.log(error));
-    } else {
-      this.tareaService.addTarea(this.tarea)
-      .subscribe( data => {
-        console.log(data);
-        this.router.navigate(['tareas/' + this.tarea._id]); }, error => console.log(error));
-    }
+    this.tareaService.updateTarea(this.tarea)
+      .subscribe( response => {
+
+        console.log(response);
+        this.router.navigate(['/tareas']);
+      },
+      error => console.log(error));
   }
 
 

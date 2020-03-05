@@ -8,11 +8,12 @@ import { EditTareaComponent } from './edit-tarea/edit-tarea.component';
 import { HttpClientModule } from '@angular/common/http';
 import { TareaService } from './shared/tarea.service';
 import { FormsModule } from '@angular/forms';
+import { NewTareaComponent } from './new-tarea/new-tarea.component';
 
 const appRoutes: Routes = [
   { path: 'tareas', component: TareaListaComponent},
-  { path: 'tareas/:id/edit', component: EditTareaComponent},
-  { path: 'tareas/new', component: EditTareaComponent },
+  { path: 'tareas/new', component: NewTareaComponent },
+  { path: 'tareas/edit/:id', component: EditTareaComponent},
   { path: '*', redirectTo: '/tareas', pathMatch: 'full'}
 ];
 
@@ -20,7 +21,8 @@ const appRoutes: Routes = [
   declarations: [
     AppComponent,
     TareaListaComponent,
-    EditTareaComponent
+    EditTareaComponent,
+    NewTareaComponent
   ],
   imports: [
     BrowserModule,
