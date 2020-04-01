@@ -35,7 +35,6 @@ export class TareaListaComponent implements OnInit {
       },
       error => {
         console.log(error);
-        this.router.navigate(['/tareas']);
       }
     );
   }
