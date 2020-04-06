@@ -18,7 +18,7 @@ export class NewTareaComponent implements OnInit {
   public status: string;
   public fecha: Date;
   public estado: string;
-  public titulo: string = '';
+  public titulo = '';
 
   constructor(
     private route: ActivatedRoute,
