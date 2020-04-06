@@ -5,14 +5,14 @@
                 <div class="col-sm-12">
                     <label for="titulo" class="control-label">Titulo</label>
                     <input type="text" class="form-control" required name="titulo"
-                    ([ngModel])="tarea.titulo">
+                    [(ngModel)]="titulo">
                 </div>
             </fieldset>
             <fieldset class="form-group">
                 <div class="col-sm-3">
                     <label for="fecha" class="control-label">Fecha</label>
                     <input type="date" class="form-control" required
-                    [ngModel]="tarea.fecha | date:'yyyy-MM-dd'"
+                    [ngModel]="fecha | date:'yyyy-MM-dd'"
                     (ngModelChange)="tarea.fecha=$event" name="fecha">
                 </div>
             </fieldset>
@@ -20,9 +20,9 @@
                 <div class="col-sm-3">
                     <label for="estado" class="control-label">Estado</label>
                     <select name="estado" class="form-control" required
-                    [(ngModel)]="tarea.estado">
+                    [(ngModel)]="estado">
                         <option *ngFor="let estado of tareaEstadosSelect"
-                        [value]="estado.value"></option>
+                        [value]="estado.value">{{ estado.value }}</option>
                     </select>
                 </div>
             </fieldset>
