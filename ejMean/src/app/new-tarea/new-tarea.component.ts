@@ -14,11 +14,11 @@ import { map, switchMap } from 'rxjs/operators';
 export class NewTareaComponent implements OnInit {
 
   public tarea: TareaModel;
-  public tareaEstadosSelect = ['Por hacer', 'En curso', 'Hecha'];
+  public tareaEstadosSelect = TareaEstadosSelect;
   public status: string;
   public fecha: Date;
   public estado: string;
-  public titulo: string;
+  public titulo: string = '';
 
   constructor(
     private route: ActivatedRoute,
@@ -29,15 +29,15 @@ export class NewTareaComponent implements OnInit {
   ngOnInit() {
     // this.tareaEstadosSelect = TareaEstadosSelect;
     // New empty tarea
-    this.tarea = new TareaModel(null, '', new Date(), 'Por hacer');
+    // this.tarea = new TareaModel(null, '', new Date(), 'Por hacer');
   }
 
   onSubmit() {
 
     // Asign form parameters to this.tarea
-    this.tarea.fecha = this.fecha;
-    this.tarea.estado = this.estado;
-    this.tarea.titulo = this.titulo;
+    this.tarea = new TareaModel(null, this.titulo, this.fecha, this.estado);
+    // debug
+    console.log(JSON.stringify(this.tarea));
 
     // Call method to post item on DB
     this.tareaService.addTarea(this.tarea)

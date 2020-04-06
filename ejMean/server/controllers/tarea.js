@@ -33,7 +33,7 @@ var controller = {
       // Every tarea must have a title
       var valid_title = !validator.isEmpty(params.titulo);
     }catch(err){
-      return res.status(500).send({
+      return res.status(400).send({
         status: 'error',
         message: 'Invalid data sent'
       })
