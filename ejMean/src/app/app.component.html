@@ -1,6 +1,8 @@
 <div class="container">
   <h3>My task manager</h3>
-  <button type="button" class="btn btn-outline-primary" (click)="navigate()">See task list</button>
+  <div *ngIf="navigateButton">
+    <button type="button" class="btn btn-outline-primary" (click)="navigate()">See task list</button>
+  </div>
   <br>
   <router-outlet></router-outlet>
 </div>

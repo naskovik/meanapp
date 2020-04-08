@@ -11,7 +11,10 @@ export class AppComponent {
   constructor(private router: Router) {}
   title = 'My Task Manager';
 
+  navigateButton = true;
+
   navigate(){
     this.router.navigate(['tareas/']);
+    this.navigateButton = !this.navigateButton;
   }
 }
