@@ -1,2 +1,2 @@
 # meanapp
-An exercise building a MEAN application.
+A task manager build using MongoDB, Express, Angular and NodeJS.
