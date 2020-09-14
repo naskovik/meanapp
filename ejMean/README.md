@@ -1,3 +1,6 @@
+This is a small task manager app to practice with Angular, Express and NodeJs. MongoDb is also involved as the name MEANapp suggests but nothing really important of it
+was learnt here.
+
 # EjMean
 
 This project was generated with [Angular CLI](https://github.com/angular/angular-cli) version 9.0.1.
